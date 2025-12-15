@@ -1,0 +1,41 @@
+{
+  "name": "@cronos/resource-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"test/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"test/**/*.{ts,tsx}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run --dir test/unit",
+    "test:integration": "vitest run --dir test/integration",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@crypto.com/facilitator-client": "^1.0.1",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-google-recaptcha": "^3.1.0",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^24.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.7.3",
+    "typescript": "~5.6.2",
+    "vite": "^7.2.6",
+    "vitest": "^4.0.14"
+  }
+}
