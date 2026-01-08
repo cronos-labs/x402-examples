@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment & Secrets
+.env
+*.env
+
+# Logs & telemetry
+logs/
+*.log
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Byte-compiled / caches
+.pytest_cache/
+.cache/
+.mypy_cache/
+.pyre/
+.coverage
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Jupyter / Notebooks
+.ipynb_checkpoints/
+
+# Data / temp
+tmp/
+*.sqlite
+*.db
+tempo_data
+grafana_data
+agent_cache.json
