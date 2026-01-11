@@ -9,7 +9,7 @@ All enums inherit from `AutoStrEnum`, ensuring they behave like plain strings
 while retaining enum semantics.
 """
 
-from .common import AutoStrEnum
+from host.lib.enums.common import AutoStrEnum
 
 
 class StatusMessage(AutoStrEnum):

@@ -1,9 +1,9 @@
 import { useCallback, useMemo, useState } from 'react';
-import { Facilitator } from '@crypto.com/facilitator-client';
 import { createApiClient } from '../integration/api';
 import type { PaymentChallenge } from '../integration/api.interfaces';
 import { ensureWallet } from '../utils/wallet';
 import { ensureCronosChain } from '../utils/cronos';
+import { Facilitator } from '@crypto.com/facilitator-client';
 
 /**
  * Options for configuring the X402 payment flow hook.
@@ -109,6 +109,7 @@ export function useX402Flow(options: UseX402FlowOptions): UseX402FlowResult {
       setStatus('Signing EIP-3009 payment header in wallet...');
 
       const fac = new Facilitator({ network: accepts0.network });
+
       const paymentHeader = await fac.generatePaymentHeader({
         to: accepts0.payTo,
         value: accepts0.maxAmountRequired,

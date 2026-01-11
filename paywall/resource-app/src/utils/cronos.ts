@@ -1,5 +1,22 @@
 import type { CronosNetwork } from '@crypto.com/facilitator-client';
 
+const CRONOS = {
+  mainnet: {
+    chainId: '0x19',
+    chainName: 'Cronos Mainnet',
+    nativeCurrency: { name: 'CRO', symbol: 'CRO', decimals: 18 },
+    rpcUrls: ['https://evm.cronos.org'],
+    blockExplorerUrls: ['https://cronoscan.com'],
+  },
+  testnet: {
+    chainId: '0x152',
+    chainName: 'Cronos Testnet',
+    nativeCurrency: { name: 'tCRO', symbol: 'tCRO', decimals: 18 },
+    rpcUrls: ['https://evm-t3.cronos.org'],
+    blockExplorerUrls: ['https://cronos.org/explorer/testnet3'],
+  },
+} as const;
+
 /**
  * Ensures the user's wallet is connected to the required Cronos network.
  *
@@ -21,42 +38,35 @@ import type { CronosNetwork } from '@crypto.com/facilitator-client';
  * @throws If the wallet rejects the request or the provider is unavailable.
  */
 export async function ensureCronosChain(target: CronosNetwork): Promise<void> {
-  /**
-   * Cronos chain id in hex format as expected by EIP-3085 / EIP-3326.
-   *
-   * @remarks
-   * - `0x19`  → Cronos Mainnet (25)
-   * - `0x152` → Cronos Testnet (338)
-   */
-  const chainIdHex = target === 'cronos-mainnet' ? '0x19' : '0x152';
-
   const anyWindow = window as any;
+  const eth = anyWindow?.ethereum;
+  if (!eth?.request) throw new Error('No EIP-1193 provider found (window.ethereum missing)');
+
+  const cfg = target === 'cronos-mainnet' ? CRONOS.mainnet : CRONOS.testnet;
+
+  const switchTo = async () =>
+    eth.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: cfg.chainId }],
+    });
 
   try {
-    await anyWindow.ethereum.request({
-      method: 'wallet_switchEthereumChain',
-      params: [{ chainId: chainIdHex }],
-    });
+    await switchTo();
+    return;
   } catch (e: any) {
-    /**
-     * Error code `4902` indicates the requested chain is not yet added
-     * to the user's wallet.
-     */
-    if (e?.code === 4902 && target === 'cronos-testnet') {
-      await anyWindow.ethereum.request({
+    // 4902 = chain not added
+    if (e?.code === 4902) {
+      await eth.request({
         method: 'wallet_addEthereumChain',
-        params: [
-          {
-            chainId: '0x152',
-            chainName: 'Cronos Testnet',
-            nativeCurrency: { name: 'tCRO', symbol: 'tCRO', decimals: 18 },
-            rpcUrls: ['https://evm-t3.cronos.org'],
-            blockExplorerUrls: ['https://cronos.org/explorer/testnet3'],
-          },
-        ],
+        params: [cfg],
       });
-    } else {
-      throw e;
+
+      // IMPORTANT: switch after adding
+      await switchTo();
+      return;
     }
+
+    // user rejected, or other error
+    throw e;
   }
 }

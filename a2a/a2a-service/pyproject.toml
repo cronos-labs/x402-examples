@@ -65,6 +65,8 @@ dependencies = [
 
   "rich>=13.7.0",
   "typing-extensions>=4.12.2",
+
+  "crypto-com-facilitator-client>=1.0.4",
 ]
 
 [project.optional-dependencies]

@@ -1,4 +1,4 @@
-import { Facilitator, CronosNetwork, PaymentRequirements } from '@crypto.com/facilitator-client';
+import { CronosNetwork, Facilitator, PaymentRequirements } from '@crypto.com/facilitator-client';
 import { handleX402Payment } from '../lib/middlewares/require.middleware.js';
 
 const NETWORK = (process.env.NETWORK ?? 'cronos-testnet') as CronosNetwork;

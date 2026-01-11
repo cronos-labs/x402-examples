@@ -1,12 +1,6 @@
 import crypto from 'node:crypto';
 import type { Request, Response, NextFunction } from 'express';
 import type {
-  Facilitator,
-  VerifyRequest,
-  X402VerifyResponse,
-  X402SettleResponse,
-} from '@crypto.com/facilitator-client';
-import type {
   Accepts,
   PaidRecord,
   PayResult,
@@ -14,6 +8,7 @@ import type {
   X402Response,
 } from '../../services/resource.interface.js';
 import { PaymentStatus } from '../interfaces/api.interface.js';
+import { Facilitator, VerifyRequest, X402SettleResponse, X402VerifyResponse } from '@crypto.com/facilitator-client';
 
 /**
  * In-memory entitlement store keyed by an entitlement key (typically a payment id).

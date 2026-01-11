@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@crypto.com/facilitator-client": "^1.0.1",
+    "@crypto.com/facilitator-client": "^1.0.3",
     "cors": "2.8.5",
     "dotenv": "^16.4.5",
     "ethers": "^6.15.0",

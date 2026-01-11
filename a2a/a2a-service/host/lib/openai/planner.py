@@ -24,8 +24,8 @@ Error handling:
 import json
 from typing import Any, Dict, List, Optional
 
-from ..errors.app_error import LlmError
-from ..errors.decorators import handle_errors
+from host.lib.errors.app_error import LlmError
+from host.lib.errors.decorators import handle_errors
 
 
 class PaywallPlanner:

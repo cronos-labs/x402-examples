@@ -32,8 +32,8 @@ from a2a.server.request_handlers import DefaultRequestHandler
 from a2a.server.tasks import InMemoryPushNotificationConfigStore, InMemoryTaskStore
 from a2a.types import AgentCapabilities, AgentCard, AgentSkill
 
-from .executor import PaywallExecutor
-from .lib.config import settings
+from host.executor import PaywallExecutor
+from host.lib.config import settings
 
 
 async def main() -> None:

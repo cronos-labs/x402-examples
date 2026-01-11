@@ -20,10 +20,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
-from .lib.a2a.events import progress, finish, fail
-from .lib.enums.message import FailMessage, ProgressMessage
-from .lib.enums.name import ArtifactName
-from .lib.errors.app_error import AppError
+from host.lib.a2a.events import progress, finish, fail
+from host.lib.enums.message import FailMessage, ProgressMessage
+from host.lib.enums.name import ArtifactName
+from host.lib.errors.app_error import AppError
 
 
 class PaywallPipeline:

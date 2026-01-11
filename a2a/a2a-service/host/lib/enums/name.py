@@ -7,7 +7,7 @@ enum avoids hard-coded strings and ensures consistent artifact naming across
 agents, pipelines, and clients.
 """
 
-from .common import AutoStrEnum
+from host.lib.enums.common import AutoStrEnum
 
 
 class ArtifactName(AutoStrEnum):
