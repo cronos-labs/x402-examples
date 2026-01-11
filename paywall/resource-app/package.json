@@ -17,7 +17,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@crypto.com/facilitator-client": "^1.0.1",
+    "@crypto.com/facilitator-client": "^1.0.3",
     "@types/react-google-recaptcha": "^2.1.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
