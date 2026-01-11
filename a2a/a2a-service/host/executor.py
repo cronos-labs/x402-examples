@@ -25,10 +25,10 @@ from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events.event_queue import EventQueue
 from a2a.utils import new_task
 
-from .pipeline import PaywallPipeline
-from .service import PaywallService
-from .lib.openai.client import OpenAIClient
-from .lib.openai.planner import PaywallPlanner
+from host.pipeline import PaywallPipeline
+from host.service import PaywallService
+from host.lib.openai.client import OpenAIClient
+from host.lib.openai.planner import PaywallPlanner
 
 
 class PaywallExecutor(AgentExecutor):

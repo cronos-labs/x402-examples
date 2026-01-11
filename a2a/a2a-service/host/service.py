@@ -37,11 +37,14 @@ from typing import Any, Dict, List, Optional
 import httpx
 from eth_account import Account
 
-from .lib.a2a.discovery import fetch_agent_card
-from .lib.errors.app_error import ConfigError, NetworkError, ValidationError
-from .lib.errors.decorators import handle_errors
+from crypto_com_facilitator_client.integrations.facilitator_interface import (
+    CronosNetwork,
+)
+from crypto_com_facilitator_client.lib.client.index import Facilitator
 
-from crypto_com_facilitator_client import Facilitator, CronosNetwork
+from host.lib.a2a.discovery import fetch_agent_card
+from host.lib.errors.app_error import ConfigError, NetworkError, ValidationError
+from host.lib.errors.decorators import handle_errors
 
 
 X402_PROTOCOL = "x402"

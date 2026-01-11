@@ -14,7 +14,7 @@ import functools
 import logging
 from typing import Any, Callable
 
-from .app_error import AppError
+from host.lib.errors.app_error import AppError
 
 logger = logging.getLogger(__name__)
 
